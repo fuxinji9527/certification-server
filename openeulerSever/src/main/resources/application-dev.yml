@@ -60,7 +60,7 @@ iam:
 
 # 信息提取配置
 irs:
-  orcUrl: https://apig.heds-beta2.huawei.com/api/image-undir/ocr?projectid=${heds.appId}/ocr
+  ocrUrl: https://apig.heds-beta2.huawei.com/api/image-undir/ocr?projectid=${heds.appId}/ocr
   projectName: Euler
   scene: LicenseIdentify
   irsUrl: https://console.heds-beta2.huawei.com/sir/document/rule-engine/info/info_result

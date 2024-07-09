@@ -48,7 +48,7 @@ public class LoginController {
     @Value("${oauth.cookie.path}")
     private String cookiePath;
 
-    @Value("${idass.clientId}")
+    @Value("${idaas.clientId}")
     private String clientId;
 
     @Value("${idaas.authCodeUrl}")
@@ -208,7 +208,7 @@ public class LoginController {
         map.put("client_id", clientId);
         map.put("scope", "base.profile");
         HttpEntity<Map<String, Object>> httpEntity = new HttpEntity<>(map);
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(accessTokenUrl, httpEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(userInfoUrl, httpEntity, String.class);
         String body = responseEntity.getBody();
         return JSONObject.parseObject(body);
     }

@@ -4,6 +4,7 @@
 
 package com.huawei.it.euler.config.handler;
 
+import com.alibaba.fastjson.JSONObject;
 import com.huawei.it.euler.common.JsonResponse;
 import com.huawei.it.euler.common.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;

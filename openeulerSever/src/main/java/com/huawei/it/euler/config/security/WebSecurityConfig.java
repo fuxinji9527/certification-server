@@ -65,6 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(eulerLogoutSuccessHandler)
                 .and()
                 .authorizeHttpRequests()
+                .requestMatchers(urlWhitelist.split(","))
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
