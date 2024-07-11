@@ -80,7 +80,7 @@ idaas:
 # 简单通知服务配置
 sns:
   appId: ${heds.appId}
-  templatedId: B104E4B354C44271AC038BF88B68DCEB
+  templateId: B104E4B354C44271AC038BF88B68DCEB
   emailUrl: http://apig.heds-beta2.huawei.com/api/sns/mail/send
   messageUrl: http://apig.heds-beta2.huawei.com/api/sns/mail/send
   xHwAppKey: Fliix82tyRNgsrHYls2G5w==
@@ -100,3 +100,20 @@ downloadUrl:
 
 certificates:
   pdfSavePath: /openeuler/file/
+
+oauth:
+  cookie:
+    path: /
+
+origin:
+  value: https://kwe-beta.huawei.cn
+
+referer:
+  value: https://kwe-beta.huawei.cn/web/certification
+
+url:
+  whitelist: /v3/api-docs,/webjars/**,/logout,/auth/login,/auth/callback,/index.html,/user/getAllProvince,/auth/logout,/auth/logoutCallback,/software/compatibilityChecklist,/software/downloadAuthenticate,/software/filterCriteria,/software/communityChecklist
+
+protocol:
+  url:
+    whitelist: /v3/api-docs,/webjars/**,/logout,/auth/login,/auth/callback,/index.html,/user/getAllProvince,/auth/logout,/auth/logoutCallback,/software/compatibilityChecklist,/software/downloadAuthenticate,/software/filterCriteria,/software/communityChecklist,/user/signPrivacyAgreement

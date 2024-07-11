@@ -14,6 +14,7 @@ import com.huawei.it.euler.model.vo.EulerUserVo;
 import com.huawei.it.euler.service.UserService;
 import com.huawei.it.euler.util.EncryptUtils;
 import com.huawei.it.euler.util.LogUtils;
+import com.huawei.it.euler.util.SessionManagement;
 import com.huawei.it.euler.util.UserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -100,7 +101,7 @@ public class LoginController {
      */
     @GetMapping("/login")
     public JsonResponse<String> login() throws GeneralSecurityException {
-        String state = UUID.randomUUID().toString();
+        String state = SessionManagement.genSessionIdToHex();
         String loginUrl = authCodeUrl + "?response_type=code" + "&scope=base.profile" + "&state="
                 + state + "&client_id=" + clientId + "&redirect_uri=" + redirectUrl;
         return JsonResponse.success(loginUrl);

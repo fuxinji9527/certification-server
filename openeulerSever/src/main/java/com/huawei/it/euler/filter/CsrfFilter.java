@@ -7,6 +7,7 @@ package com.huawei.it.euler.filter;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.huawei.it.euler.common.JsonResponse;
 import com.huawei.it.euler.util.FilterUtils;
+import com.huawei.it.euler.util.SessionManagement;
 import com.huawei.it.euler.util.UserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.*;
 
 /**
@@ -42,8 +44,12 @@ public class CsrfFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
-        // todo 随机数生成token
-        String token = UUID.randomUUID().toString();
+        String token;
+        try {
+            token = SessionManagement.generateTokenToHex();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException("XSRF-TOKEN Generation failed.");
+        }
         Cookie cookie = new Cookie("XSRF-TOKEN", token);
         cookie.setPath(cookiePath);
         cookie.setSecure(true);
